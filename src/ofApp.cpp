@@ -1,19 +1,20 @@
 #include "ofApp.h"
 #include <vector>
 #include <random>
+using namespace std;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	std::random_device rd;
-	std::mt19937 eng(rd()); //random device is used to seed engine
-	std::uniform_int_distribution<> mydist1(0,1200);
+	random_device rd;
+	mt19937 eng(rd()); //random device is used to seed engine
+	normal_distribution<> mydist1(1000,15);
 	
 	for (int i=0; i < 20; i++)
 	{
 		X.push_back(mydist1(eng)); //same output
 	}
 	
-	std::uniform_int_distribution<> mydist2(0,970);
+	normal_distribution<> mydist2(800,15);
 	
 	for(int x=0; x < 20; x++)
 	{
