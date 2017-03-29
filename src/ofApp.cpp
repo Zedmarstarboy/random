@@ -1,10 +1,28 @@
 #include "ofApp.h"
+#include <vector>
+#include <random>
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-jewel.load("diamond.png");// image to use (must be stored in "random/bin/data" folder)
-X = {500, 1000, 30, 100, 300, 200, 750, 380 };// set of x-coordinates for jewel
-Y = {630, 400, 900,40, 200, 0, 90, 30}; //set of y-coordinates for jewel
+	std::random_device rd;
+	std::mt19937 eng(rd()); //random device is used to seed engine
+	std::uniform_int_distribution<> mydist1(0,1200);
+	
+	for (int i=0; i < 20; i++)
+	{
+		X.push_back(mydist1(eng)); //same output
+	}
+	
+	std::uniform_int_distribution<> mydist2(0,970);
+	
+	for(int x=0; x < 20; x++)
+	{
+		Y.push_back(mydist2(eng)); //same output
+	}
+	
+	jewel.load("diamond.png");// image to use (must be stored in "random/bin/data" folder)
+	X = {500, 1000, 30, 100, 300, 200, 750, 380 };// set of x-coordinates for jewel
+	Y = {630, 400, 900,40, 200, 0, 90, 30}; //set of y-coordinates for jewel
 }
 
 //--------------------------------------------------------------
